@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import domain.ControladorEfetuarEmprestimo;
 import domain.EfetuarEmprestimoRT;
 import entities.SituacaoDTO;
 
@@ -15,16 +16,18 @@ public class App {
 		livrosSolicitados.add(12);
 		
 		List<Integer> emprestimos = new ArrayList<Integer>();
-		EfetuarEmprestimoRT roteiro = new EfetuarEmprestimoRT();
+		ControladorEfetuarEmprestimo control = new ControladorEfetuarEmprestimo();
 		
-		SituacaoDTO st = roteiro.iniciarEmprestimo(idLeitor);
+		
+		SituacaoDTO st = (SituacaoDTO) control.servico(ControladorEfetuarEmprestimo.Tipos.INICIAR_EMPRESTIMO, idLeitor);
+
 		
 		for (Integer idLivro : livrosSolicitados) {
-			Date dataDev = roteiro.emprestarLivro(idLivro, emprestimos);
+			Date dataDev = (Date) control.servico(ControladorEfetuarEmprestimo.Tipos.EMPRESTAR_LIVRO, idLivro, emprestimos);
 			System.out.println("devolucao: " + dataDev.toString());
 		}
 		
-		roteiro.encerrarEmprestimo(idLeitor, emprestimos);
+		control.servico(ControladorEfetuarEmprestimo.Tipos.ENCERRAR_EMPRESTIMO, idLeitor, emprestimos);
 	}
 
 }
