@@ -12,7 +12,7 @@ public class CamadaDadosMock implements CamadaDadosInterface{
 
 	@Override
 	public LeitorDTO buscarLeitor(int idLeitor) {
-		return new LeitorDTO(idLeitor);
+		return new LeitorDTO(idLeitor, "Lucas");
 	}
 
 	@Override

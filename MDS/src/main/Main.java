@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import domain.EmprestimoMDS;
@@ -10,14 +11,23 @@ public class Main {
 
 	public static void main(String[] args) {
 		int idLeitor = 10;
-		List<Integer> livrosSolicitados = new ArrayList<Integer>();
-		livrosSolicitados.add(1);
+		int idLivro = 12;
 		
-		//passo 1.1
-		EmprestimoMDS md = EmprestimoMDS.getInstance();
+		List<Integer> emprestimos = new ArrayList<Integer>();
 		
-		//passo 1.2
-		SituacaoLeitorDTO st = md.iniciarEmprestimo(idLeitor);
+		
+		//init emprestimo
+		EmprestimoMDS emprestimo = EmprestimoMDS.getInstance();
+		
+		SituacaoLeitorDTO st = emprestimo.iniciarEmprestimo(idLeitor);
+		
+		System.out.println(st.getNome() + " " + st.getSituacao());
+		
+		//emprestar
+		Date dataDev = emprestimo.emprestarLivro(idLivro);
+		
+		//data dev 1 livro
+		System.out.println(dataDev);
 		
 	}
 

@@ -6,4 +6,9 @@ public class LivroDTO {
 		// TODO Auto-generated constructor stub
 	}
 
+	public static LivroDTO buscarLivro(int idLivro) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
